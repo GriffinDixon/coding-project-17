@@ -1,5 +1,5 @@
 import React from 'react';
-import Gallery from '<div className="src"></div>/components/Gallery.jsx';  // Correct path to Gallery.jsx
+import Gallery from 'src/components/Gallery.jsx';  // Correct path to Gallery.jsx
 
 function App() {
   return (
