@@ -1,7 +1,11 @@
+import React from 'react';
+import Gallery from './Gallery';  // Import Gallery component
+
 function App() {
   return (
     <div>
-      <h1>Welcome to Your React + Vite App</h1>
+      <h1>Tour Comparison App</h1>  {/* Title for the app */}
+      <Gallery />  {/* Render the Gallery component */}
     </div>
   );
 }
