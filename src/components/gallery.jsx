@@ -1,45 +1,42 @@
 import React, { useState, useEffect } from 'react';
 
 function Gallery() {
-  const [tours, setTours] = useState([]);  // State for storing tour data
-  const [loading, setLoading] = useState(true);  // Loading state
-  const [error, setError] = useState(null);  // Error state
+  const [tours, setTours] = useState([]);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
 
-  // Fetch tour data from API
   useEffect(() => {
     fetch('https://course-api.com/react-tours-project')
-      .then(response => response.json())
+      .then(response => {
+        if (!response.ok) {
+          throw new Error(`HTTP error! status: ${response.status}`);
+        }
+        return response.json();
+      })
       .then(data => {
-        setTours(data);
+        const updatedData = data.map(tour => ({ ...tour, showDescription: false }));
+        setTours(updatedData);
         setLoading(false);
       })
-      .catch(error => {
+      .catch(() => {
         setError('Failed to fetch tours');
         setLoading(false);
       });
   }, []);
 
-  // Function to handle "Not Interested" button click
   const removeTour = (id) => {
     setTours(tours.filter(tour => tour.id !== id));
   };
 
-  // Function to toggle the description visibility
   const toggleDescription = (id) => {
     setTours(tours.map(tour => 
       tour.id === id ? { ...tour, showDescription: !tour.showDescription } : tour
     ));
   };
 
-  // If loading, display loading message
-  if (loading) {
-    return <div>Loading...</div>;
-  }
-
-  // If there is an error, display error message
-  if (error) {
-    return <div>{error}</div>;
-  }
+  if (loading) return <div>Loading...</div>;
+  if (error) return <div>{error}</div>;
+  if (!tours.length) return <div>No tours available.</div>;
 
   return (
     <div className="tour-list">
