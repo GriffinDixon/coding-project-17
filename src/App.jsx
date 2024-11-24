@@ -1,4 +1,5 @@
 import React from 'react';
+import './App.css';
 import Gallery from './components/gallery'; // Importing Gallery component
 
 function App() {
