@@ -1,11 +1,11 @@
 import React from 'react';
-import Gallery from './Gallery.jsx';  // Import Gallery component
+import Gallery from './components/Gallery.jsx';  // path to Gallery
 
 function App() {
   return (
     <div>
-      <h1>Tour Comparison App</h1>  {/* Title for the app */}
-      <Gallery />  {/* Render the Gallery component */}
+      <h1>Tour Comparison App</h1>
+      <Gallery />  {/* Rendering the Gallery component */}
     </div>
   );
 }
