@@ -1,5 +1,5 @@
 import React from 'react';
-import Gallery from './Gallery';  // Import Gallery component
+import Gallery from './Gallery.jsx';  // Import Gallery component
 
 function App() {
   return (
